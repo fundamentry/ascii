@@ -45,6 +45,38 @@ describe('Grammar', () => {
     ['rs', '\x1e'],
     ['us', '\x1f'],
     ['sp', ' '],
+    ['exclamationPoint', '!'],
+    ['quotationMarks', '"'],
+    ['numberSign', '#'],
+    ['dollarSign', '$'],
+    ['percent', '%'],
+    ['ampersand', '&'],
+    ['apostrophe', "'"],
+    ['openingParenthesis', '('],
+    ['closingParenthesis', ')'],
+    ['asterisk', '*'],
+    ['plus', '+'],
+    ['comma', ','],
+    ['hyphen', '-'],
+    ['period', '.'],
+    ['slant', '/'],
+    ['colon', ':'],
+    ['semicolon', ';'],
+    ['lessThan', '<'],
+    ['equals', '='],
+    ['greaterThan', '>'],
+    ['questionMark', '?'],
+    ['commercialAt', '@'],
+    ['openingBracket', '['],
+    ['reverseSlant', '\\'],
+    ['closingBracket', ']'],
+    ['circumflex', '^'],
+    ['underline', '_'],
+    ['graveAccent', '`'],
+    ['openingBrace', '{'],
+    ['verticalLine', '|'],
+    ['closingBrace', '}'],
+    ['overline', '~'],
     ['del', '\x7f'],
   ] as const;
 
@@ -108,5 +140,39 @@ describe('Grammar', () => {
     const recognition = grammar.nul().derive(input('😀'));
 
     expect(recognition).toBeInstanceOf(Unmatched);
+  });
+
+  describe('digit', () => {
+    it.each(['0', '9'])("must match the digit '%s'", digit => {
+      const recognition = grammar.digit().derive(input(digit));
+
+      expect(recognition).toBeInstanceOf(Matched);
+
+      if (recognition instanceof Matched)
+        expect(recognition.value().toString()).toBe(digit);
+    });
+
+    it('must not match a letter', () => {
+      const recognition = grammar.digit().derive(input('a'));
+
+      expect(recognition).toBeInstanceOf(Unmatched);
+    });
+  });
+
+  describe('alpha', () => {
+    it.each(['A', 'Z', 'a', 'z'])("must match the letter '%s'", letter => {
+      const recognition = grammar.alpha().derive(input(letter));
+
+      expect(recognition).toBeInstanceOf(Matched);
+
+      if (recognition instanceof Matched)
+        expect(recognition.value().toString()).toBe(letter);
+    });
+
+    it('must not match a digit', () => {
+      const recognition = grammar.alpha().derive(input('5'));
+
+      expect(recognition).toBeInstanceOf(Unmatched);
+    });
   });
 });
