@@ -1,3 +1,9 @@
+## 1.1.2
+
+### 🩹 Fixes
+
+- use latest version of '@fundamentry/grammar' and '@fundamentry/abnf' ([82de105](https://github.com/fundamentry/ascii/commit/82de105))
+
 ## 1.1.1
 
 ### 🩹 Fixes
