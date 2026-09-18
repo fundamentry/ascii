@@ -1,11 +1,11 @@
 catalog:
   '@commitlint/cli': 21.2.2
   '@commitlint/config-conventional': 21.2.2
-  '@fundamentry/abnf': 1.0.0
+  '@fundamentry/abnf': 1.0.1
   '@fundamentry/eslint-config-json': 1.4.7
   '@fundamentry/eslint-config-prettier': 1.0.6
   '@fundamentry/eslint-config-typescript': 1.1.11
-  '@fundamentry/grammar': 1.5.0
+  '@fundamentry/grammar': 1.6.0
   '@fundamentry/range': 1.1.0
   '@fundamentry/scalar': 1.2.0
   '@fundamentry/stream': 1.1.0
@@ -40,8 +40,8 @@ allowBuilds:
   'unrs-resolver': false
 
 minimumReleaseAgeExclude:
-  - '@fundamentry/abnf@1.0.0'
-  - '@fundamentry/grammar@1.5.0'
+  - '@fundamentry/abnf@1.0.1'
+  - '@fundamentry/grammar@1.6.0'
   - '@fundamentry/order@1.0.0'
   - '@fundamentry/range@1.1.0'
   - '@fundamentry/scalar@1.2.0'
