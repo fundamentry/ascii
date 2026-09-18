@@ -1,3 +1,9 @@
+## 1.1.1
+
+### 🩹 Fixes
+
+- use latest version of '@fundamentry/grammar' and '@fundamentry/abnf' ([4da783e](https://github.com/fundamentry/ascii/commit/4da783e))
+
 ## 1.1.0
 
 ### 🚀 Features

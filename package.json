@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@fundamentry/ascii",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "description": "A toolkit for working with ASCII character names.",
   "repository": {
