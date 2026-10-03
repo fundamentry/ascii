@@ -1,3 +1,10 @@
+## 1.1.4
+
+### 🩹 Fixes
+
+- resolve internal imports to compiled declarations for consumers ([c21c322](https://github.com/fundamentry/ascii/commit/c21c322))
+- exclude test files from the published package ([d303434](https://github.com/fundamentry/ascii/commit/d303434))
+
 ## 1.1.3
 
 ### 🩹 Fixes
