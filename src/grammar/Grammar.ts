@@ -1,280 +1,342 @@
 import { ABNF } from '@fundamentry/abnf';
-import { type Rule } from '@fundamentry/grammar';
-import { Range } from '@fundamentry/range';
-import { type Scalar, codePoint } from '@fundamentry/scalar';
+import { type Production } from '@fundamentry/grammar';
+
+import {
+  ACK,
+  AMPERSAND,
+  APOSTROPHE,
+  ASTERISK,
+  BEL,
+  BS,
+  CAN,
+  CIRCUMFLEX,
+  CLOSING_BRACE,
+  CLOSING_BRACKET,
+  CLOSING_PARENTHESIS,
+  COLON,
+  COMMA,
+  COMMERCIAL_AT,
+  DC1,
+  DC2,
+  DC3,
+  DC4,
+  DEL,
+  DLE,
+  DOLLAR_SIGN,
+  EM,
+  ENQ,
+  EOT,
+  EQUALS,
+  ESC,
+  ETB,
+  ETX,
+  EXCLAMATION_POINT,
+  FF,
+  FS,
+  GRAVE_ACCENT,
+  GREATER_THAN,
+  GS,
+  HYPHEN,
+  LESS_THAN,
+  NAK,
+  NUL,
+  NUMBER_SIGN,
+  OPENING_BRACE,
+  OPENING_BRACKET,
+  OPENING_PARENTHESIS,
+  OVERLINE,
+  PERCENT,
+  PERIOD,
+  PLUS,
+  QUESTION_MARK,
+  REVERSE_SLANT,
+  RS,
+  SEMICOLON,
+  SI,
+  SLANT,
+  SO,
+  SOH,
+  STX,
+  SUB,
+  SYN,
+  UNDERLINE,
+  US,
+  VERTICAL_LINE,
+  VT,
+} from '#project/symbol';
 
 export class Grammar {
   readonly #abnf = new ABNF.Grammar();
 
-  ack(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x06)));
+  ack(): Production<ACK> {
+    return ACK.production();
   }
 
-  alpha(): Rule<Scalar.CodePoint> {
+  alpha(): Production<ABNF.ALPHA> {
     return this.#abnf.alpha();
   }
 
-  ampersand(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x26)));
+  ampersand(): Production<AMPERSAND> {
+    return AMPERSAND.production();
   }
 
-  apostrophe(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x27)));
+  apostrophe(): Production<APOSTROPHE> {
+    return APOSTROPHE.production();
   }
 
-  asterisk(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x2a)));
+  asterisk(): Production<ASTERISK> {
+    return ASTERISK.production();
   }
 
-  bel(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x07)));
+  bel(): Production<BEL> {
+    return BEL.production();
   }
 
-  bs(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x08)));
+  bs(): Production<BS> {
+    return BS.production();
   }
 
-  can(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x18)));
+  can(): Production<CAN> {
+    return CAN.production();
   }
 
-  circumflex(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x5e)));
+  circumflex(): Production<CIRCUMFLEX> {
+    return CIRCUMFLEX.production();
   }
 
-  closingBrace(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x7d)));
+  closingBrace(): Production<CLOSING_BRACE> {
+    return CLOSING_BRACE.production();
   }
 
-  closingBracket(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x5d)));
+  closingBracket(): Production<CLOSING_BRACKET> {
+    return CLOSING_BRACKET.production();
   }
 
-  closingParenthesis(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x29)));
+  closingParenthesis(): Production<CLOSING_PARENTHESIS> {
+    return CLOSING_PARENTHESIS.production();
   }
 
-  colon(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x3a)));
+  colon(): Production<COLON> {
+    return COLON.production();
   }
 
-  comma(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x2c)));
+  comma(): Production<COMMA> {
+    return COMMA.production();
   }
 
-  commercialAt(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x40)));
+  commercialAt(): Production<COMMERCIAL_AT> {
+    return COMMERCIAL_AT.production();
   }
 
-  cr(): Rule<Scalar.CodePoint> {
+  cr(): Production<ABNF.CR> {
     return this.#abnf.cr();
   }
 
-  dc1(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x11)));
+  dc1(): Production<DC1> {
+    return DC1.production();
   }
 
-  dc2(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x12)));
+  dc2(): Production<DC2> {
+    return DC2.production();
   }
 
-  dc3(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x13)));
+  dc3(): Production<DC3> {
+    return DC3.production();
   }
 
-  dc4(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x14)));
+  dc4(): Production<DC4> {
+    return DC4.production();
   }
 
-  del(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x7f)));
+  del(): Production<DEL> {
+    return DEL.production();
   }
 
-  digit(): Rule<Scalar.CodePoint> {
+  digit(): Production<ABNF.DIGIT> {
     return this.#abnf.digit();
   }
 
-  dle(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x10)));
+  dle(): Production<DLE> {
+    return DLE.production();
   }
 
-  dollarSign(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x24)));
+  dollarSign(): Production<DOLLAR_SIGN> {
+    return DOLLAR_SIGN.production();
   }
 
-  em(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x19)));
+  em(): Production<EM> {
+    return EM.production();
   }
 
-  enq(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x05)));
+  enq(): Production<ENQ> {
+    return ENQ.production();
   }
 
-  eot(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x04)));
+  eot(): Production<EOT> {
+    return EOT.production();
   }
 
-  equals(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x3d)));
+  equals(): Production<EQUALS> {
+    return EQUALS.production();
   }
 
-  esc(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x1b)));
+  esc(): Production<ESC> {
+    return ESC.production();
   }
 
-  etb(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x17)));
+  etb(): Production<ETB> {
+    return ETB.production();
   }
 
-  etx(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x03)));
+  etx(): Production<ETX> {
+    return ETX.production();
   }
 
-  exclamationPoint(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x21)));
+  exclamationPoint(): Production<EXCLAMATION_POINT> {
+    return EXCLAMATION_POINT.production();
   }
 
-  ff(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x0c)));
+  ff(): Production<FF> {
+    return FF.production();
   }
 
-  fs(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x1c)));
+  fs(): Production<FS> {
+    return FS.production();
   }
 
-  graveAccent(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x60)));
+  graveAccent(): Production<GRAVE_ACCENT> {
+    return GRAVE_ACCENT.production();
   }
 
-  greaterThan(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x3e)));
+  greaterThan(): Production<GREATER_THAN> {
+    return GREATER_THAN.production();
   }
 
-  gs(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x1d)));
+  gs(): Production<GS> {
+    return GS.production();
   }
 
-  ht(): Rule<Scalar.CodePoint> {
+  ht(): Production<ABNF.HTAB> {
     return this.#abnf.htab();
   }
 
-  hyphen(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x2d)));
+  hyphen(): Production<HYPHEN> {
+    return HYPHEN.production();
   }
 
-  lessThan(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x3c)));
+  lessThan(): Production<LESS_THAN> {
+    return LESS_THAN.production();
   }
 
-  lf(): Rule<Scalar.CodePoint> {
+  lf(): Production<ABNF.LF> {
     return this.#abnf.lf();
   }
 
-  nak(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x15)));
+  nak(): Production<NAK> {
+    return NAK.production();
   }
 
-  nul(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x00)));
+  nul(): Production<NUL> {
+    return NUL.production();
   }
 
-  numberSign(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x23)));
+  numberSign(): Production<NUMBER_SIGN> {
+    return NUMBER_SIGN.production();
   }
 
-  openingBrace(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x7b)));
+  openingBrace(): Production<OPENING_BRACE> {
+    return OPENING_BRACE.production();
   }
 
-  openingBracket(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x5b)));
+  openingBracket(): Production<OPENING_BRACKET> {
+    return OPENING_BRACKET.production();
   }
 
-  openingParenthesis(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x28)));
+  openingParenthesis(): Production<OPENING_PARENTHESIS> {
+    return OPENING_PARENTHESIS.production();
   }
 
-  overline(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x7e)));
+  overline(): Production<OVERLINE> {
+    return OVERLINE.production();
   }
 
-  percent(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x25)));
+  percent(): Production<PERCENT> {
+    return PERCENT.production();
   }
 
-  period(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x2e)));
+  period(): Production<PERIOD> {
+    return PERIOD.production();
   }
 
-  plus(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x2b)));
+  plus(): Production<PLUS> {
+    return PLUS.production();
   }
 
-  questionMark(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x3f)));
+  questionMark(): Production<QUESTION_MARK> {
+    return QUESTION_MARK.production();
   }
 
-  quotationMarks(): Rule<Scalar.CodePoint> {
+  quotationMarks(): Production<ABNF.DQUOTE> {
     return this.#abnf.dquote();
   }
 
-  reverseSlant(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x5c)));
+  reverseSlant(): Production<REVERSE_SLANT> {
+    return REVERSE_SLANT.production();
   }
 
-  rs(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x1e)));
+  rs(): Production<RS> {
+    return RS.production();
   }
 
-  semicolon(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x3b)));
+  semicolon(): Production<SEMICOLON> {
+    return SEMICOLON.production();
   }
 
-  si(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x0f)));
+  si(): Production<SI> {
+    return SI.production();
   }
 
-  slant(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x2f)));
+  slant(): Production<SLANT> {
+    return SLANT.production();
   }
 
-  so(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x0e)));
+  so(): Production<SO> {
+    return SO.production();
   }
 
-  soh(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x01)));
+  soh(): Production<SOH> {
+    return SOH.production();
   }
 
-  sp(): Rule<Scalar.CodePoint> {
+  sp(): Production<ABNF.SP> {
     return this.#abnf.sp();
   }
 
-  stx(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x02)));
+  stx(): Production<STX> {
+    return STX.production();
   }
 
-  sub(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x1a)));
+  sub(): Production<SUB> {
+    return SUB.production();
   }
 
-  syn(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x16)));
+  syn(): Production<SYN> {
+    return SYN.production();
   }
 
-  underline(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x5f)));
+  underline(): Production<UNDERLINE> {
+    return UNDERLINE.production();
   }
 
-  us(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x1f)));
+  us(): Production<US> {
+    return US.production();
   }
 
-  verticalLine(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x7c)));
+  verticalLine(): Production<VERTICAL_LINE> {
+    return VERTICAL_LINE.production();
   }
 
-  vt(): Rule<Scalar.CodePoint> {
-    return this.#abnf.terminal(Range.singleton(codePoint(0x0b)));
+  vt(): Production<VT> {
+    return VT.production();
   }
 }

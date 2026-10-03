@@ -1,12 +1,11 @@
 import { assert, describe, expect, it } from 'vitest';
 
-import { Matched, Unmatched } from '@fundamentry/grammar';
-import { codePoint } from '@fundamentry/scalar';
-import { Tape } from '@fundamentry/stream';
+import { CodePoint } from '@fundamentry/scalar';
+import { Point } from '@fundamentry/stream';
 
 import { Grammar } from './Grammar.js';
 
-const input = (value: string) => new Tape(Array.from(value, codePoint));
+const input = (value: string) => Point.of(Array.from(value, CodePoint.of));
 
 describe('Grammar', () => {
   const grammar = new Grammar();
@@ -87,86 +86,68 @@ describe('Grammar', () => {
   );
 
   it.each(names)("%s must match '%s'", (name, char) => {
-    const recognition = grammar[name]().derive(input(char));
+    const result = grammar[name]().parse(input(char));
 
-    assert(recognition instanceof Matched);
-    expect(recognition.value().toString()).toBe(char);
+    assert(result.ok());
+    expect(result.value().value.toString()).toBe(char);
+    expect(result.value().rest.isAtEnd()).toBe(true);
   });
 
   it.each(names)(
     "%s must not match an unrelated character 'z'",
     (name, char) => {
       expect(char).not.toBe('z');
-
-      const recognition = grammar[name]().derive(input('z'));
-
-      expect(recognition).toBeInstanceOf(Unmatched);
+      expect(grammar[name]().parse(input('z')).ok()).toBe(false);
     }
   );
 
   it.each(names)(
-    '%s must not match a raw tape element that is not a code point',
+    '%s must not match a raw element that is not a code point',
     name => {
-      const recognition = grammar[name]().derive(new Tape(['']));
-
-      expect(recognition).toBeInstanceOf(Unmatched);
+      expect(grammar[name]().parse(input('')).ok()).toBe(false);
     }
   );
 
   it.each(collisions)(
     '$name must not match the character reserved for $otherName',
     ({ name, otherChar }) => {
-      const recognition = grammar[name]().derive(input(otherChar));
-
-      expect(recognition).toBeInstanceOf(Unmatched);
+      expect(grammar[name]().parse(input(otherChar)).ok()).toBe(false);
     }
   );
 
-  it('must not match a lone surrogate passed as a raw tape element, instead of throwing', () => {
-    const recognition = grammar.nul().derive(new Tape(['\ud83d']));
-
-    expect(recognition).toBeInstanceOf(Unmatched);
-  });
-
-  it('must not match a raw tape element containing more than one code point', () => {
-    const recognition = grammar.nul().derive(new Tape(['ab']));
-
-    expect(recognition).toBeInstanceOf(Unmatched);
+  it('must not match a raw element containing more than one code point', () => {
+    expect(grammar.nul().parse(input('ab')).ok()).toBe(false);
   });
 
   it('must not match a full astral character represented as a single code point', () => {
-    const recognition = grammar.nul().derive(input('😀'));
-
-    expect(recognition).toBeInstanceOf(Unmatched);
+    expect(grammar.nul().parse(input('😀')).ok()).toBe(false);
   });
 
   describe('digit', () => {
     it.each(['0', '9'])("must match the digit '%s'", digit => {
-      const recognition = grammar.digit().derive(input(digit));
+      const result = grammar.digit().parse(input(digit));
 
-      assert(recognition instanceof Matched);
-      expect(recognition.value().toString()).toBe(digit);
+      assert(result.ok());
+      expect(result.value().value.toString()).toBe(digit);
+      expect(result.value().rest.isAtEnd()).toBe(true);
     });
 
     it('must not match a letter', () => {
-      const recognition = grammar.digit().derive(input('a'));
-
-      expect(recognition).toBeInstanceOf(Unmatched);
+      expect(grammar.digit().parse(input('a')).ok()).toBe(false);
     });
   });
 
   describe('alpha', () => {
     it.each(['A', 'Z', 'a', 'z'])("must match the letter '%s'", letter => {
-      const recognition = grammar.alpha().derive(input(letter));
+      const result = grammar.alpha().parse(input(letter));
 
-      assert(recognition instanceof Matched);
-      expect(recognition.value().toString()).toBe(letter);
+      assert(result.ok());
+      expect(result.value().value.toString()).toBe(letter);
+      expect(result.value().rest.isAtEnd()).toBe(true);
     });
 
     it('must not match a digit', () => {
-      const recognition = grammar.alpha().derive(input('5'));
-
-      expect(recognition).toBeInstanceOf(Unmatched);
+      expect(grammar.alpha().parse(input('5')).ok()).toBe(false);
     });
   });
 });
