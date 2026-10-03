@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { assert, describe, expect, it } from 'vitest';
 
 import { Matched, Unmatched } from '@fundamentry/grammar';
 import { codePoint } from '@fundamentry/scalar';
@@ -89,10 +89,8 @@ describe('Grammar', () => {
   it.each(names)("%s must match '%s'", (name, char) => {
     const recognition = grammar[name]().derive(input(char));
 
-    expect(recognition).toBeInstanceOf(Matched);
-
-    if (recognition instanceof Matched)
-      expect(recognition.value().toString()).toBe(char);
+    assert(recognition instanceof Matched);
+    expect(recognition.value().toString()).toBe(char);
   });
 
   it.each(names)(
@@ -146,10 +144,8 @@ describe('Grammar', () => {
     it.each(['0', '9'])("must match the digit '%s'", digit => {
       const recognition = grammar.digit().derive(input(digit));
 
-      expect(recognition).toBeInstanceOf(Matched);
-
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe(digit);
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe(digit);
     });
 
     it('must not match a letter', () => {
@@ -163,10 +159,8 @@ describe('Grammar', () => {
     it.each(['A', 'Z', 'a', 'z'])("must match the letter '%s'", letter => {
       const recognition = grammar.alpha().derive(input(letter));
 
-      expect(recognition).toBeInstanceOf(Matched);
-
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe(letter);
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe(letter);
     });
 
     it('must not match a digit', () => {
