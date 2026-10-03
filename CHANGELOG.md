@@ -1,3 +1,13 @@
+# 2.0.0
+
+### 🚀 Features
+
+- ⚠️  model rules as symbols over grammar productions ([f6cb7f4](https://github.com/fundamentry/ascii/commit/f6cb7f4))
+
+### ⚠️  Breaking Changes
+
+- model rules as symbols over grammar productions  ([f6cb7f4](https://github.com/fundamentry/ascii/commit/f6cb7f4))
+
 ## 1.1.4
 
 ### 🩹 Fixes
