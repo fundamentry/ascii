@@ -1,1 +1,1 @@
-export * as ASCII from './ASCII.js';
+export * from '#project/grammar';

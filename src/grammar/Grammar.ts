@@ -1,342 +1,160 @@
-import { ABNF } from '@fundamentry/abnf';
-import { type Production } from '@fundamentry/grammar';
-
-import {
-  ACK,
-  AMPERSAND,
-  APOSTROPHE,
-  ASTERISK,
-  BEL,
-  BS,
-  CAN,
-  CIRCUMFLEX,
-  CLOSING_BRACE,
-  CLOSING_BRACKET,
-  CLOSING_PARENTHESIS,
-  COLON,
-  COMMA,
-  COMMERCIAL_AT,
-  DC1,
-  DC2,
-  DC3,
-  DC4,
-  DEL,
-  DLE,
-  DOLLAR_SIGN,
-  EM,
-  ENQ,
-  EOT,
-  EQUALS,
-  ESC,
-  ETB,
-  ETX,
-  EXCLAMATION_POINT,
-  FF,
-  FS,
-  GRAVE_ACCENT,
-  GREATER_THAN,
-  GS,
-  HYPHEN,
-  LESS_THAN,
-  NAK,
-  NUL,
-  NUMBER_SIGN,
-  OPENING_BRACE,
-  OPENING_BRACKET,
-  OPENING_PARENTHESIS,
-  OVERLINE,
-  PERCENT,
-  PERIOD,
-  PLUS,
-  QUESTION_MARK,
-  REVERSE_SLANT,
-  RS,
-  SEMICOLON,
-  SI,
-  SLANT,
-  SO,
-  SOH,
-  STX,
-  SUB,
-  SYN,
-  UNDERLINE,
-  US,
-  VERTICAL_LINE,
-  VT,
-} from '#project/symbol';
-
-export class Grammar {
-  readonly #abnf = new ABNF.Grammar();
-
-  ack(): Production<ACK> {
-    return ACK.production();
-  }
-
-  alpha(): Production<ABNF.ALPHA> {
-    return this.#abnf.alpha();
-  }
-
-  ampersand(): Production<AMPERSAND> {
-    return AMPERSAND.production();
-  }
-
-  apostrophe(): Production<APOSTROPHE> {
-    return APOSTROPHE.production();
-  }
-
-  asterisk(): Production<ASTERISK> {
-    return ASTERISK.production();
-  }
-
-  bel(): Production<BEL> {
-    return BEL.production();
-  }
-
-  bs(): Production<BS> {
-    return BS.production();
-  }
-
-  can(): Production<CAN> {
-    return CAN.production();
-  }
-
-  circumflex(): Production<CIRCUMFLEX> {
-    return CIRCUMFLEX.production();
-  }
-
-  closingBrace(): Production<CLOSING_BRACE> {
-    return CLOSING_BRACE.production();
-  }
-
-  closingBracket(): Production<CLOSING_BRACKET> {
-    return CLOSING_BRACKET.production();
-  }
-
-  closingParenthesis(): Production<CLOSING_PARENTHESIS> {
-    return CLOSING_PARENTHESIS.production();
-  }
-
-  colon(): Production<COLON> {
-    return COLON.production();
-  }
-
-  comma(): Production<COMMA> {
-    return COMMA.production();
-  }
-
-  commercialAt(): Production<COMMERCIAL_AT> {
-    return COMMERCIAL_AT.production();
-  }
-
-  cr(): Production<ABNF.CR> {
-    return this.#abnf.cr();
-  }
-
-  dc1(): Production<DC1> {
-    return DC1.production();
-  }
-
-  dc2(): Production<DC2> {
-    return DC2.production();
-  }
-
-  dc3(): Production<DC3> {
-    return DC3.production();
-  }
-
-  dc4(): Production<DC4> {
-    return DC4.production();
-  }
-
-  del(): Production<DEL> {
-    return DEL.production();
-  }
-
-  digit(): Production<ABNF.DIGIT> {
-    return this.#abnf.digit();
-  }
-
-  dle(): Production<DLE> {
-    return DLE.production();
-  }
-
-  dollarSign(): Production<DOLLAR_SIGN> {
-    return DOLLAR_SIGN.production();
-  }
-
-  em(): Production<EM> {
-    return EM.production();
-  }
-
-  enq(): Production<ENQ> {
-    return ENQ.production();
-  }
-
-  eot(): Production<EOT> {
-    return EOT.production();
-  }
-
-  equals(): Production<EQUALS> {
-    return EQUALS.production();
-  }
-
-  esc(): Production<ESC> {
-    return ESC.production();
-  }
-
-  etb(): Production<ETB> {
-    return ETB.production();
-  }
-
-  etx(): Production<ETX> {
-    return ETX.production();
-  }
-
-  exclamationPoint(): Production<EXCLAMATION_POINT> {
-    return EXCLAMATION_POINT.production();
-  }
-
-  ff(): Production<FF> {
-    return FF.production();
-  }
-
-  fs(): Production<FS> {
-    return FS.production();
-  }
-
-  graveAccent(): Production<GRAVE_ACCENT> {
-    return GRAVE_ACCENT.production();
-  }
-
-  greaterThan(): Production<GREATER_THAN> {
-    return GREATER_THAN.production();
-  }
-
-  gs(): Production<GS> {
-    return GS.production();
-  }
-
-  ht(): Production<ABNF.HTAB> {
-    return this.#abnf.htab();
-  }
-
-  hyphen(): Production<HYPHEN> {
-    return HYPHEN.production();
-  }
-
-  lessThan(): Production<LESS_THAN> {
-    return LESS_THAN.production();
-  }
-
-  lf(): Production<ABNF.LF> {
-    return this.#abnf.lf();
-  }
-
-  nak(): Production<NAK> {
-    return NAK.production();
-  }
-
-  nul(): Production<NUL> {
-    return NUL.production();
-  }
-
-  numberSign(): Production<NUMBER_SIGN> {
-    return NUMBER_SIGN.production();
-  }
-
-  openingBrace(): Production<OPENING_BRACE> {
-    return OPENING_BRACE.production();
-  }
-
-  openingBracket(): Production<OPENING_BRACKET> {
-    return OPENING_BRACKET.production();
-  }
-
-  openingParenthesis(): Production<OPENING_PARENTHESIS> {
-    return OPENING_PARENTHESIS.production();
-  }
-
-  overline(): Production<OVERLINE> {
-    return OVERLINE.production();
-  }
-
-  percent(): Production<PERCENT> {
-    return PERCENT.production();
-  }
-
-  period(): Production<PERIOD> {
-    return PERIOD.production();
-  }
-
-  plus(): Production<PLUS> {
-    return PLUS.production();
-  }
-
-  questionMark(): Production<QUESTION_MARK> {
-    return QUESTION_MARK.production();
-  }
-
-  quotationMarks(): Production<ABNF.DQUOTE> {
-    return this.#abnf.dquote();
-  }
-
-  reverseSlant(): Production<REVERSE_SLANT> {
-    return REVERSE_SLANT.production();
-  }
-
-  rs(): Production<RS> {
-    return RS.production();
-  }
-
-  semicolon(): Production<SEMICOLON> {
-    return SEMICOLON.production();
-  }
-
-  si(): Production<SI> {
-    return SI.production();
-  }
-
-  slant(): Production<SLANT> {
-    return SLANT.production();
-  }
-
-  so(): Production<SO> {
-    return SO.production();
-  }
-
-  soh(): Production<SOH> {
-    return SOH.production();
-  }
-
-  sp(): Production<ABNF.SP> {
-    return this.#abnf.sp();
-  }
-
-  stx(): Production<STX> {
-    return STX.production();
-  }
-
-  sub(): Production<SUB> {
-    return SUB.production();
-  }
-
-  syn(): Production<SYN> {
-    return SYN.production();
-  }
-
-  underline(): Production<UNDERLINE> {
-    return UNDERLINE.production();
-  }
-
-  us(): Production<US> {
-    return US.production();
-  }
-
-  verticalLine(): Production<VERTICAL_LINE> {
-    return VERTICAL_LINE.production();
-  }
-
-  vt(): Production<VT> {
-    return VT.production();
-  }
-}
+import { dquote, htab } from '@fundamentry/abnf';
+import { Rule } from '@fundamentry/grammar';
+
+export { alpha, cr, digit, lf, sp } from '@fundamentry/abnf';
+
+export const ack = new Rule('ACK', codec => codec.character(0x06));
+
+export const ampersand = new Rule('AMPERSAND', codec => codec.character('&'));
+
+export const apostrophe = new Rule('APOSTROPHE', codec => codec.character("'"));
+
+export const asterisk = new Rule('ASTERISK', codec => codec.character('*'));
+
+export const bel = new Rule('BEL', codec => codec.character(0x07));
+
+export const bs = new Rule('BS', codec => codec.character(0x08));
+
+export const can = new Rule('CAN', codec => codec.character(0x18));
+
+export const circumflex = new Rule('CIRCUMFLEX', codec => codec.character('^'));
+
+export const closingBrace = new Rule('CLOSING-BRACE', codec =>
+  codec.character('}')
+);
+
+export const closingBracket = new Rule('CLOSING-BRACKET', codec =>
+  codec.character(']')
+);
+
+export const closingParenthesis = new Rule('CLOSING-PARENTHESIS', codec =>
+  codec.character(')')
+);
+
+export const colon = new Rule('COLON', codec => codec.character(':'));
+
+export const comma = new Rule('COMMA', codec => codec.character(','));
+
+export const commercialAt = new Rule('COMMERCIAL-AT', codec =>
+  codec.character('@')
+);
+
+export const dc1 = new Rule('DC1', codec => codec.character(0x11));
+
+export const dc2 = new Rule('DC2', codec => codec.character(0x12));
+
+export const dc3 = new Rule('DC3', codec => codec.character(0x13));
+
+export const dc4 = new Rule('DC4', codec => codec.character(0x14));
+
+export const del = new Rule('DEL', codec => codec.character(0x7f));
+
+export const dle = new Rule('DLE', codec => codec.character(0x10));
+
+export const dollarSign = new Rule('DOLLAR-SIGN', codec =>
+  codec.character('$')
+);
+
+export const em = new Rule('EM', codec => codec.character(0x19));
+
+export const enq = new Rule('ENQ', codec => codec.character(0x05));
+
+export const eot = new Rule('EOT', codec => codec.character(0x04));
+
+export const equals = new Rule('EQUALS', codec => codec.character('='));
+
+export const esc = new Rule('ESC', codec => codec.character(0x1b));
+
+export const etb = new Rule('ETB', codec => codec.character(0x17));
+
+export const etx = new Rule('ETX', codec => codec.character(0x03));
+
+export const exclamationPoint = new Rule('EXCLAMATION-POINT', codec =>
+  codec.character('!')
+);
+
+export const ff = new Rule('FF', codec => codec.character(0x0c));
+
+export const fs = new Rule('FS', codec => codec.character(0x1c));
+
+export const graveAccent = new Rule('GRAVE-ACCENT', codec =>
+  codec.character('`')
+);
+
+export const greaterThan = new Rule('GREATER-THAN', codec =>
+  codec.character('>')
+);
+
+export const gs = new Rule('GS', codec => codec.character(0x1d));
+
+export const ht = new Rule('HT', () => htab);
+
+export const hyphen = new Rule('HYPHEN', codec => codec.character('-'));
+
+export const lessThan = new Rule('LESS-THAN', codec => codec.character('<'));
+
+export const nak = new Rule('NAK', codec => codec.character(0x15));
+
+export const nul = new Rule('NUL', codec => codec.character(0x00));
+
+export const numberSign = new Rule('NUMBER-SIGN', codec =>
+  codec.character('#')
+);
+
+export const openingBrace = new Rule('OPENING-BRACE', codec =>
+  codec.character('{')
+);
+
+export const openingBracket = new Rule('OPENING-BRACKET', codec =>
+  codec.character('[')
+);
+
+export const openingParenthesis = new Rule('OPENING-PARENTHESIS', codec =>
+  codec.character('(')
+);
+
+export const overline = new Rule('OVERLINE', codec => codec.character('~'));
+
+export const percent = new Rule('PERCENT', codec => codec.character('%'));
+
+export const period = new Rule('PERIOD', codec => codec.character('.'));
+
+export const plus = new Rule('PLUS', codec => codec.character('+'));
+
+export const questionMark = new Rule('QUESTION-MARK', codec =>
+  codec.character('?')
+);
+
+export const quotationMarks = new Rule('QUOTATION-MARKS', () => dquote);
+
+export const reverseSlant = new Rule('REVERSE-SLANT', codec =>
+  codec.character('\\')
+);
+
+export const rs = new Rule('RS', codec => codec.character(0x1e));
+
+export const semicolon = new Rule('SEMICOLON', codec => codec.character(';'));
+
+export const si = new Rule('SI', codec => codec.character(0x0f));
+
+export const slant = new Rule('SLANT', codec => codec.character('/'));
+
+export const so = new Rule('SO', codec => codec.character(0x0e));
+
+export const soh = new Rule('SOH', codec => codec.character(0x01));
+
+export const stx = new Rule('STX', codec => codec.character(0x02));
+
+export const sub = new Rule('SUB', codec => codec.character(0x1a));
+
+export const syn = new Rule('SYN', codec => codec.character(0x16));
+
+export const underline = new Rule('UNDERLINE', codec => codec.character('_'));
+
+export const us = new Rule('US', codec => codec.character(0x1f));
+
+export const verticalLine = new Rule('VERTICAL-LINE', codec =>
+  codec.character('|')
+);
+
+export const vt = new Rule('VT', codec => codec.character(0x0b));
