@@ -1,3 +1,13 @@
+# 3.0.0
+
+### 🚀 Features
+
+- ⚠️  expose core rules as standalone rules ([a9ae8e5](https://github.com/fundamentry/ascii/commit/a9ae8e5))
+
+### ⚠️  Breaking Changes
+
+- expose core rules as standalone rules  ([a9ae8e5](https://github.com/fundamentry/ascii/commit/a9ae8e5))
+
 # 2.0.0
 
 ### 🚀 Features
